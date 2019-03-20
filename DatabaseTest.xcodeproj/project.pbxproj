@@ -16,6 +16,10 @@
 		B9C4D93F2241B1C300BD35F3 /* DatabaseTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C4D9382241B1C300BD35F3 /* DatabaseTestKit.framework */; };
 		B9C4D9402241B1C300BD35F3 /* DatabaseTestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9C4D9382241B1C300BD35F3 /* DatabaseTestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B9C4D9452241B1C900BD35F3 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4D9312241A26B00BD35F3 /* DataSource.swift */; };
+		B9C4D94D2241B72D00BD35F3 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C4D94C2241B72D00BD35F3 /* NotificationCenter.framework */; };
+		B9C4D9502241B72D00BD35F3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4D94F2241B72D00BD35F3 /* TodayViewController.swift */; };
+		B9C4D9532241B72D00BD35F3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C4D9512241B72D00BD35F3 /* MainInterface.storyboard */; };
+		B9C4D9572241B72D00BD35F3 /* DatabaseTestToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B9C4D94A2241B72D00BD35F3 /* DatabaseTestToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +29,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = B9C4D9372241B1C300BD35F3;
 			remoteInfo = DatabaseTestKit;
+		};
+		B9C4D9552241B72D00BD35F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C4D9142241A06000BD35F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9C4D9492241B72D00BD35F3;
+			remoteInfo = DatabaseTestToday;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -38,6 +49,17 @@
 				B9C4D9402241B1C300BD35F3 /* DatabaseTestKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9C4D95B2241B72D00BD35F3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B9C4D9572241B72D00BD35F3 /* DatabaseTestToday.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -54,6 +76,11 @@
 		B9C4D9382241B1C300BD35F3 /* DatabaseTestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DatabaseTestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C4D93A2241B1C300BD35F3 /* DatabaseTestKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseTestKit.h; sourceTree = "<group>"; };
 		B9C4D93B2241B1C300BD35F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9C4D94A2241B72D00BD35F3 /* DatabaseTestToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DatabaseTestToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9C4D94C2241B72D00BD35F3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		B9C4D94F2241B72D00BD35F3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		B9C4D9522241B72D00BD35F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B9C4D9542241B72D00BD35F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +99,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B9C4D9472241B72D00BD35F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9C4D94D2241B72D00BD35F3 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +115,8 @@
 			children = (
 				B9C4D91E2241A06000BD35F3 /* DatabaseTest */,
 				B9C4D9392241B1C300BD35F3 /* DatabaseTestKit */,
+				B9C4D94E2241B72D00BD35F3 /* DatabaseTestToday */,
+				B9C4D94B2241B72D00BD35F3 /* Frameworks */,
 				B9C4D91D2241A06000BD35F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +126,7 @@
 			children = (
 				B9C4D91C2241A06000BD35F3 /* DatabaseTest.app */,
 				B9C4D9382241B1C300BD35F3 /* DatabaseTestKit.framework */,
+				B9C4D94A2241B72D00BD35F3 /* DatabaseTestToday.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,6 +154,24 @@
 			path = DatabaseTestKit;
 			sourceTree = "<group>";
 		};
+		B9C4D94B2241B72D00BD35F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9C4D94C2241B72D00BD35F3 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9C4D94E2241B72D00BD35F3 /* DatabaseTestToday */ = {
+			isa = PBXGroup;
+			children = (
+				B9C4D94F2241B72D00BD35F3 /* TodayViewController.swift */,
+				B9C4D9512241B72D00BD35F3 /* MainInterface.storyboard */,
+				B9C4D9542241B72D00BD35F3 /* Info.plist */,
+			);
+			path = DatabaseTestToday;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -138,11 +194,13 @@
 				B9C4D9192241A06000BD35F3 /* Frameworks */,
 				B9C4D91A2241A06000BD35F3 /* Resources */,
 				B9C4D9442241B1C300BD35F3 /* Embed Frameworks */,
+				B9C4D95B2241B72D00BD35F3 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				B9C4D93E2241B1C300BD35F3 /* PBXTargetDependency */,
+				B9C4D9562241B72D00BD35F3 /* PBXTargetDependency */,
 			);
 			name = DatabaseTest;
 			productName = DatabaseTest;
@@ -167,6 +225,23 @@
 			productReference = B9C4D9382241B1C300BD35F3 /* DatabaseTestKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		B9C4D9492241B72D00BD35F3 /* DatabaseTestToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9C4D9582241B72D00BD35F3 /* Build configuration list for PBXNativeTarget "DatabaseTestToday" */;
+			buildPhases = (
+				B9C4D9462241B72D00BD35F3 /* Sources */,
+				B9C4D9472241B72D00BD35F3 /* Frameworks */,
+				B9C4D9482241B72D00BD35F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DatabaseTestToday;
+			productName = DatabaseTestToday;
+			productReference = B9C4D94A2241B72D00BD35F3 /* DatabaseTestToday.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -181,6 +256,9 @@
 						CreatedOnToolsVersion = 10.1;
 					};
 					B9C4D9372241B1C300BD35F3 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					B9C4D9492241B72D00BD35F3 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
@@ -200,6 +278,7 @@
 			targets = (
 				B9C4D91B2241A06000BD35F3 /* DatabaseTest */,
 				B9C4D9372241B1C300BD35F3 /* DatabaseTestKit */,
+				B9C4D9492241B72D00BD35F3 /* DatabaseTestToday */,
 			);
 		};
 /* End PBXProject section */
@@ -219,6 +298,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9C4D9482241B72D00BD35F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9C4D9532241B72D00BD35F3 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +329,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B9C4D9462241B72D00BD35F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9C4D9502241B72D00BD35F3 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -249,6 +344,11 @@
 			isa = PBXTargetDependency;
 			target = B9C4D9372241B1C300BD35F3 /* DatabaseTestKit */;
 			targetProxy = B9C4D93D2241B1C300BD35F3 /* PBXContainerItemProxy */;
+		};
+		B9C4D9562241B72D00BD35F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9C4D9492241B72D00BD35F3 /* DatabaseTestToday */;
+			targetProxy = B9C4D9552241B72D00BD35F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -267,6 +367,14 @@
 				B9C4D9292241A06200BD35F3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B9C4D9512241B72D00BD35F3 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9C4D9522241B72D00BD35F3 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -482,6 +590,44 @@
 			};
 			name = Release;
 		};
+		B9C4D9592241B72D00BD35F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PBH8V487HB;
+				INFOPLIST_FILE = DatabaseTestToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.civatrix.DatabaseTest.DatabaseTestToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B9C4D95A2241B72D00BD35F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PBH8V487HB;
+				INFOPLIST_FILE = DatabaseTestToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.civatrix.DatabaseTest.DatabaseTestToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -508,6 +654,15 @@
 			buildConfigurations = (
 				B9C4D9422241B1C300BD35F3 /* Debug */,
 				B9C4D9432241B1C300BD35F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9C4D9582241B72D00BD35F3 /* Build configuration list for PBXNativeTarget "DatabaseTestToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9C4D9592241B72D00BD35F3 /* Debug */,
+				B9C4D95A2241B72D00BD35F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
