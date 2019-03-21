@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PromiseKit
 
 public protocol DataUpdateListener: class {
     func tripsUpdated(trips: [Trip])
@@ -52,15 +53,21 @@ public class DataSource: NSObject {
         refreshData()
     }
     
-    private func refreshData() {
+    @discardableResult
+    public func refreshData() -> Promise<[Trip]> {
+        let (promise, seal) = Promise<[Trip]>.pending()
         coordinator.coordinate(readingItemAt: fileUrl, options: .withoutChanges, error: nil) { (url) in
             do {
                 let data = try Data(contentsOf: url)
                 tripsStore = try JSONDecoder().decode([Trip].self, from: data)
+                seal.fulfill(tripsStore)
             } catch {
                 NSLog("Unable to deserialize database: \(error)")
+                seal.reject(error)
             }
         }
+        
+        return promise
     }
     
     public func trips() -> [Trip] {

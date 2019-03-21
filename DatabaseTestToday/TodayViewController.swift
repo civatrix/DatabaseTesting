@@ -11,7 +11,11 @@ import NotificationCenter
 import DatabaseTestKit
 
 class TodayViewController: UIViewController, NCWidgetProviding {
-    var trips = [Trip]()
+    var trips = [Trip]() {
+        didSet {
+            tripsTableView.reloadData()
+        }
+    }
     
     @IBOutlet var tripsTableView: UITableView!
     
@@ -32,9 +36,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        trips = DataSource.shared.trips()
-        
-        completionHandler(NCUpdateResult.newData)
+        DataSource.shared.refreshData().done { newTrips in
+            self.trips = newTrips
+            completionHandler(.newData)
+        }.catch { (_) in
+            completionHandler(.failed)
+        }
     }
     
     func addTrip() {
@@ -80,7 +87,6 @@ extension TodayViewController: UITableViewDelegate {
 extension TodayViewController: DataUpdateListener {
     func tripsUpdated(trips: [Trip]) {
         self.trips = trips
-        tripsTableView.reloadData()
     }
 }
 

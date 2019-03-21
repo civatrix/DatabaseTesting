@@ -1,0 +1,6 @@
+framework module Pods_DatabaseTestToday {
+  umbrella header "Pods-DatabaseTestToday-umbrella.h"
+
+  export *
+  module * { export * }
+}
