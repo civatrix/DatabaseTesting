@@ -76,10 +76,12 @@ public class DataSource: NSObject {
     
     public func addTrip(_ trip: Trip) {
         tripsStore.append(trip)
+        saveTrips()
     }
     
     public func removeTrip(at index: Int) {
         tripsStore.remove(at: index)
+        saveTrips()
     }
     
     public func registerForUpdates(_ listener: DataUpdateListener) {
@@ -90,7 +92,7 @@ public class DataSource: NSObject {
         listeners.removeValue(forKey: ObjectIdentifier(listener))
     }
     
-    private func tripsUpdated() {
+    private func saveTrips() {
         coordinator.coordinate(writingItemAt: fileUrl, options: .forReplacing, error: nil) { (url) in
             do {
                 try JSONEncoder().encode(tripsStore).write(to: url)
@@ -98,7 +100,9 @@ public class DataSource: NSObject {
                 NSLog("Failed to serialize trips to database: \(error)")
             }
         }
-        
+    }
+    
+    private func tripsUpdated() {
         let newTrips = trips()
         listeners.values.forEach { $0.tripsUpdated(trips: newTrips) }
     }

@@ -3,12 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B1E13BA9F87B4C3C8F273D7 /* Pods_DatabaseTestUpcomingToday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F082B8EADF24691913AEF0DE /* Pods_DatabaseTestUpcomingToday.framework */; };
 		747A562657E20F301B8F4E23 /* Pods_DatabaseTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF7DEAA21A9CC32B4E94B30 /* Pods_DatabaseTest.framework */; };
 		9F4499976AA748E50AA7A0AE /* Pods_DatabaseTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196C9AF5298BDFD6F2387090 /* Pods_DatabaseTestKit.framework */; };
+		B98BD0C322441CC800442EC1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C4D94C2241B72D00BD35F3 /* NotificationCenter.framework */; };
+		B98BD0C622441CC800442EC1 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98BD0C522441CC800442EC1 /* TodayViewController.swift */; };
+		B98BD0C922441CC800442EC1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B98BD0C722441CC800442EC1 /* MainInterface.storyboard */; };
+		B98BD0CD22441CC800442EC1 /* DatabaseTestUpcomingToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B98BD0C222441CC800442EC1 /* DatabaseTestUpcomingToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B9C4D9202241A06000BD35F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4D91F2241A06000BD35F3 /* AppDelegate.swift */; };
 		B9C4D9222241A06000BD35F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4D9212241A06000BD35F3 /* ViewController.swift */; };
 		B9C4D9252241A06000BD35F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C4D9232241A06000BD35F3 /* Main.storyboard */; };
@@ -26,6 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B98BD0CB22441CC800442EC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C4D9142241A06000BD35F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B98BD0C122441CC800442EC1;
+			remoteInfo = DatabaseTestUpcomingToday;
+		};
 		B9C4D93D2241B1C300BD35F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B9C4D9142241A06000BD35F3 /* Project object */;
@@ -61,6 +73,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				B9C4D9572241B72D00BD35F3 /* DatabaseTestToday.appex in Embed App Extensions */,
+				B98BD0CD22441CC800442EC1 /* DatabaseTestUpcomingToday.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +87,11 @@
 		1A75C6CF1C09ABF00924B038 /* Pods_DatabaseTestToday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatabaseTestToday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF7DEAA21A9CC32B4E94B30 /* Pods_DatabaseTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatabaseTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A95C3ED785F8A4C648CADA15 /* Pods-DatabaseTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTest.release.xcconfig"; path = "Target Support Files/Pods-DatabaseTest/Pods-DatabaseTest.release.xcconfig"; sourceTree = "<group>"; };
+		B98BD0C222441CC800442EC1 /* DatabaseTestUpcomingToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DatabaseTestUpcomingToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98BD0C522441CC800442EC1 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		B98BD0C822441CC800442EC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B98BD0CA22441CC800442EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B98BD0D12244238500442EC1 /* DatabaseTestUpcomingToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DatabaseTestUpcomingToday.entitlements; sourceTree = "<group>"; };
 		B9C4D91C2241A06000BD35F3 /* DatabaseTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatabaseTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C4D91F2241A06000BD35F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9C4D9212241A06000BD35F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,10 +112,22 @@
 		B9C4D95D22429E8300BD35F3 /* DatabaseTestToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DatabaseTestToday.entitlements; sourceTree = "<group>"; };
 		C04C0B010AD6E7A2EBCA97CA /* Pods-DatabaseTestKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTestKit.debug.xcconfig"; path = "Target Support Files/Pods-DatabaseTestKit/Pods-DatabaseTestKit.debug.xcconfig"; sourceTree = "<group>"; };
 		C7175A5CB9C36B9EABDCBA0E /* Pods-DatabaseTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTest.debug.xcconfig"; path = "Target Support Files/Pods-DatabaseTest/Pods-DatabaseTest.debug.xcconfig"; sourceTree = "<group>"; };
+		D4DB06CBC0BA8222A8530297 /* Pods-DatabaseTestUpcomingToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTestUpcomingToday.debug.xcconfig"; path = "Target Support Files/Pods-DatabaseTestUpcomingToday/Pods-DatabaseTestUpcomingToday.debug.xcconfig"; sourceTree = "<group>"; };
+		E849D4E608155BAB8971713D /* Pods-DatabaseTestUpcomingToday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTestUpcomingToday.release.xcconfig"; path = "Target Support Files/Pods-DatabaseTestUpcomingToday/Pods-DatabaseTestUpcomingToday.release.xcconfig"; sourceTree = "<group>"; };
+		F082B8EADF24691913AEF0DE /* Pods_DatabaseTestUpcomingToday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatabaseTestUpcomingToday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8F208C5239255EEFAEDA2C6 /* Pods-DatabaseTestToday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTestToday.release.xcconfig"; path = "Target Support Files/Pods-DatabaseTestToday/Pods-DatabaseTestToday.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B98BD0BF22441CC800442EC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98BD0C322441CC800442EC1 /* NotificationCenter.framework in Frameworks */,
+				6B1E13BA9F87B4C3C8F273D7 /* Pods_DatabaseTestUpcomingToday.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9C4D9192241A06000BD35F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,9 +166,21 @@
 				196457C829BF52F76E70CAAF /* Pods-DatabaseTestKit.release.xcconfig */,
 				0E01262091BD1130E6F47321 /* Pods-DatabaseTestToday.debug.xcconfig */,
 				F8F208C5239255EEFAEDA2C6 /* Pods-DatabaseTestToday.release.xcconfig */,
+				D4DB06CBC0BA8222A8530297 /* Pods-DatabaseTestUpcomingToday.debug.xcconfig */,
+				E849D4E608155BAB8971713D /* Pods-DatabaseTestUpcomingToday.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B98BD0C422441CC800442EC1 /* DatabaseTestUpcomingToday */ = {
+			isa = PBXGroup;
+			children = (
+				B98BD0D12244238500442EC1 /* DatabaseTestUpcomingToday.entitlements */,
+				B98BD0C522441CC800442EC1 /* TodayViewController.swift */,
+				B98BD0C722441CC800442EC1 /* MainInterface.storyboard */,
+				B98BD0CA22441CC800442EC1 /* Info.plist */,
+			);
+			path = DatabaseTestUpcomingToday;
 			sourceTree = "<group>";
 		};
 		B9C4D9132241A06000BD35F3 = {
@@ -147,6 +189,7 @@
 				B9C4D91E2241A06000BD35F3 /* DatabaseTest */,
 				B9C4D9392241B1C300BD35F3 /* DatabaseTestKit */,
 				B9C4D94E2241B72D00BD35F3 /* DatabaseTestToday */,
+				B98BD0C422441CC800442EC1 /* DatabaseTestUpcomingToday */,
 				B9C4D94B2241B72D00BD35F3 /* Frameworks */,
 				B9C4D91D2241A06000BD35F3 /* Products */,
 				B6F3AD27E1E42FE35644CB91 /* Pods */,
@@ -159,6 +202,7 @@
 				B9C4D91C2241A06000BD35F3 /* DatabaseTest.app */,
 				B9C4D9382241B1C300BD35F3 /* DatabaseTestKit.framework */,
 				B9C4D94A2241B72D00BD35F3 /* DatabaseTestToday.appex */,
+				B98BD0C222441CC800442EC1 /* DatabaseTestUpcomingToday.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +238,7 @@
 				7FF7DEAA21A9CC32B4E94B30 /* Pods_DatabaseTest.framework */,
 				196C9AF5298BDFD6F2387090 /* Pods_DatabaseTestKit.framework */,
 				1A75C6CF1C09ABF00924B038 /* Pods_DatabaseTestToday.framework */,
+				F082B8EADF24691913AEF0DE /* Pods_DatabaseTestUpcomingToday.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,6 +268,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B98BD0C122441CC800442EC1 /* DatabaseTestUpcomingToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B98BD0D022441CC800442EC1 /* Build configuration list for PBXNativeTarget "DatabaseTestUpcomingToday" */;
+			buildPhases = (
+				1697A560581C69A3083AE0A1 /* [CP] Check Pods Manifest.lock */,
+				B98BD0BE22441CC800442EC1 /* Sources */,
+				B98BD0BF22441CC800442EC1 /* Frameworks */,
+				B98BD0C022441CC800442EC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DatabaseTestUpcomingToday;
+			productName = DatabaseTestUpcomingToday;
+			productReference = B98BD0C222441CC800442EC1 /* DatabaseTestUpcomingToday.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B9C4D91B2241A06000BD35F3 /* DatabaseTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9C4D92E2241A06200BD35F3 /* Build configuration list for PBXNativeTarget "DatabaseTest" */;
@@ -240,6 +303,7 @@
 			dependencies = (
 				B9C4D93E2241B1C300BD35F3 /* PBXTargetDependency */,
 				B9C4D9562241B72D00BD35F3 /* PBXTargetDependency */,
+				B98BD0CC22441CC800442EC1 /* PBXTargetDependency */,
 			);
 			name = DatabaseTest;
 			productName = DatabaseTest;
@@ -293,6 +357,14 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "WestJet Airlines Ltd.";
 				TargetAttributes = {
+					B98BD0C122441CC800442EC1 = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					B9C4D91B2241A06000BD35F3 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
@@ -330,11 +402,20 @@
 				B9C4D91B2241A06000BD35F3 /* DatabaseTest */,
 				B9C4D9372241B1C300BD35F3 /* DatabaseTestKit */,
 				B9C4D9492241B72D00BD35F3 /* DatabaseTestToday */,
+				B98BD0C122441CC800442EC1 /* DatabaseTestUpcomingToday */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B98BD0C022441CC800442EC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98BD0C922441CC800442EC1 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9C4D91A2241A06000BD35F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,6 +444,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1697A560581C69A3083AE0A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DatabaseTestUpcomingToday-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		352DCEEA27B314CB5FD4D068 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -449,6 +552,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B98BD0BE22441CC800442EC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98BD0C622441CC800442EC1 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9C4D9182241A06000BD35F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -477,6 +588,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B98BD0CC22441CC800442EC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B98BD0C122441CC800442EC1 /* DatabaseTestUpcomingToday */;
+			targetProxy = B98BD0CB22441CC800442EC1 /* PBXContainerItemProxy */;
+		};
 		B9C4D93E2241B1C300BD35F3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B9C4D9372241B1C300BD35F3 /* DatabaseTestKit */;
@@ -490,6 +606,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B98BD0C722441CC800442EC1 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B98BD0C822441CC800442EC1 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		B9C4D9232241A06000BD35F3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -517,6 +641,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B98BD0CE22441CC800442EC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4DB06CBC0BA8222A8530297 /* Pods-DatabaseTestUpcomingToday.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DatabaseTestUpcomingToday/DatabaseTestUpcomingToday.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PBH8V487HB;
+				INFOPLIST_FILE = DatabaseTestUpcomingToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.civatrix.DatabaseTest.DatabaseTestUpcomingToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B98BD0CF22441CC800442EC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E849D4E608155BAB8971713D /* Pods-DatabaseTestUpcomingToday.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DatabaseTestUpcomingToday/DatabaseTestUpcomingToday.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PBH8V487HB;
+				INFOPLIST_FILE = DatabaseTestUpcomingToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.civatrix.DatabaseTest.DatabaseTestUpcomingToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B9C4D92C2241A06200BD35F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -778,6 +944,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B98BD0D022441CC800442EC1 /* Build configuration list for PBXNativeTarget "DatabaseTestUpcomingToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B98BD0CE22441CC800442EC1 /* Debug */,
+				B98BD0CF22441CC800442EC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B9C4D9172241A06000BD35F3 /* Build configuration list for PBXProject "DatabaseTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
