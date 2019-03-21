@@ -20,8 +20,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Do any additional setup after loading the view, typically from a nib.
         extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         
-        DataSource.shared.registerForUpdates(self)
         trips = DataSource.shared.trips()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DataSource.shared.registerForUpdates(self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        DataSource.shared.unregisterForUpdates(self)
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {

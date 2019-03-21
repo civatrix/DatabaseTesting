@@ -81,6 +81,8 @@
 		B9C4D94F2241B72D00BD35F3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		B9C4D9522241B72D00BD35F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B9C4D9542241B72D00BD35F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9C4D95C22429E6C00BD35F3 /* DatabaseTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DatabaseTest.entitlements; sourceTree = "<group>"; };
+		B9C4D95D22429E8300BD35F3 /* DatabaseTestToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DatabaseTestToday.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,13 +136,13 @@
 		B9C4D91E2241A06000BD35F3 /* DatabaseTest */ = {
 			isa = PBXGroup;
 			children = (
+				B9C4D95C22429E6C00BD35F3 /* DatabaseTest.entitlements */,
 				B9C4D91F2241A06000BD35F3 /* AppDelegate.swift */,
 				B9C4D9212241A06000BD35F3 /* ViewController.swift */,
 				B9C4D9232241A06000BD35F3 /* Main.storyboard */,
 				B9C4D9262241A06200BD35F3 /* Assets.xcassets */,
 				B9C4D9282241A06200BD35F3 /* LaunchScreen.storyboard */,
 				B9C4D92B2241A06200BD35F3 /* Info.plist */,
-				B9C4D9312241A26B00BD35F3 /* DataSource.swift */,
 			);
 			path = DatabaseTest;
 			sourceTree = "<group>";
@@ -148,6 +150,7 @@
 		B9C4D9392241B1C300BD35F3 /* DatabaseTestKit */ = {
 			isa = PBXGroup;
 			children = (
+				B9C4D9312241A26B00BD35F3 /* DataSource.swift */,
 				B9C4D93A2241B1C300BD35F3 /* DatabaseTestKit.h */,
 				B9C4D93B2241B1C300BD35F3 /* Info.plist */,
 			);
@@ -165,6 +168,7 @@
 		B9C4D94E2241B72D00BD35F3 /* DatabaseTestToday */ = {
 			isa = PBXGroup;
 			children = (
+				B9C4D95D22429E8300BD35F3 /* DatabaseTestToday.entitlements */,
 				B9C4D94F2241B72D00BD35F3 /* TodayViewController.swift */,
 				B9C4D9512241B72D00BD35F3 /* MainInterface.storyboard */,
 				B9C4D9542241B72D00BD35F3 /* Info.plist */,
@@ -254,12 +258,22 @@
 				TargetAttributes = {
 					B9C4D91B2241A06000BD35F3 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					B9C4D9372241B1C300BD35F3 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 					B9C4D9492241B72D00BD35F3 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -501,6 +515,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DatabaseTest/DatabaseTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PBH8V487HB;
 				INFOPLIST_FILE = DatabaseTest/Info.plist;
@@ -520,6 +535,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DatabaseTest/DatabaseTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PBH8V487HB;
 				INFOPLIST_FILE = DatabaseTest/Info.plist;
@@ -593,6 +609,7 @@
 		B9C4D9592241B72D00BD35F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DatabaseTestToday/DatabaseTestToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PBH8V487HB;
 				INFOPLIST_FILE = DatabaseTestToday/Info.plist;
@@ -612,6 +629,7 @@
 		B9C4D95A2241B72D00BD35F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DatabaseTestToday/DatabaseTestToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PBH8V487HB;
 				INFOPLIST_FILE = DatabaseTestToday/Info.plist;
