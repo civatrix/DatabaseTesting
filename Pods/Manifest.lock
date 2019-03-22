@@ -1,4 +1,5 @@
 PODS:
+  - GRDB.swift (3.7.0)
   - PromiseKit (6.5.3):
     - PromiseKit/CorePromise (= 6.5.3)
     - PromiseKit/Foundation (= 6.5.3)
@@ -10,15 +11,18 @@ PODS:
     - PromiseKit/CorePromise
 
 DEPENDENCIES:
+  - GRDB.swift (~> 3.7.0)
   - PromiseKit (~> 6.5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - GRDB.swift
     - PromiseKit
 
 SPEC CHECKSUMS:
+  GRDB.swift: 51cc9e57ae8ff7083a9d674c97925aa1de06aac5
   PromiseKit: c609029bdd801f792551a504c695c7d3098b42cd
 
-PODFILE CHECKSUM: f68a7013340ea0e5cb29356d586af9c3c7ea12dd
+PODFILE CHECKSUM: 565de78d77c21c598baeacb976374bb19118be65
 
 COCOAPODS: 1.7.0.beta.1

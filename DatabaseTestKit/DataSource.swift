@@ -8,12 +8,14 @@
 
 import UIKit
 import PromiseKit
+import GRDB
 
 public protocol DataUpdateListener: class {
     func tripsUpdated(trips: [Trip])
 }
 
-public struct Trip: Codable {
+public struct Trip: Codable, FetchableRecord, MutablePersistableRecord {
+    var id: Int64?
     public let PNR: String
     public let name: String
     
@@ -41,16 +43,34 @@ public class DataSource: NSObject {
         }
     }
     
-    private let fileUrl = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.com.databasetest")!.appendingPathComponent("database")
+    private let databaseQueue: DatabaseQueue
+    private let fileUrl = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.com.databasetest")!.appendingPathComponent("database.sqlite")
     // We need a new NSFileCoordinator for each transaction
     public var coordinator: NSFileCoordinator {
         return NSFileCoordinator(filePresenter: self)
     }
     
     override init() {
+        databaseQueue = try! DatabaseQueue(path: fileUrl.relativePath)
+        
         super.init()
         
+        createDatabase()
         refreshData()
+    }
+    
+    private func createDatabase() {
+        do {
+            try databaseQueue.write { db in
+                try db.create(table: "trip", temporary: false, ifNotExists: true) { table in
+                    table.autoIncrementedPrimaryKey("id")
+                    table.column("PNR", .text)
+                    table.column("name", .text)
+                }
+            }
+        } catch {
+            NSLog("Failed to create table: \(error)")
+        }
     }
     
     @discardableResult
@@ -58,11 +78,12 @@ public class DataSource: NSObject {
         let (promise, seal) = Promise<[Trip]>.pending()
         coordinator.coordinate(readingItemAt: fileUrl, options: .withoutChanges, error: nil) { (url) in
             do {
-                let data = try Data(contentsOf: url)
-                tripsStore = try JSONDecoder().decode([Trip].self, from: data)
+                tripsStore = try databaseQueue.read() { db -> [Trip] in
+                    return try Trip.fetchAll(db)
+                }
                 seal.fulfill(tripsStore)
             } catch {
-                NSLog("Unable to deserialize database: \(error)")
+                NSLog("Unable to read database: \(error)")
                 seal.reject(error)
             }
         }
@@ -75,13 +96,30 @@ public class DataSource: NSObject {
     }
     
     public func addTrip(_ trip: Trip) {
-        tripsStore.append(trip)
-        saveTrips()
+        coordinator.coordinate(writingItemAt: fileUrl, options: .forReplacing, error: nil) { (url) in
+            do {
+                try databaseQueue.write() { db in
+                    var newTrip = trip
+                    try newTrip.insert(db)
+                    tripsStore.append(newTrip)
+                }
+            } catch {
+                NSLog("Failed to serialize trips to database: \(error)")
+            }
+        }
     }
     
     public func removeTrip(at index: Int) {
-        tripsStore.remove(at: index)
-        saveTrips()
+        let trip = tripsStore.remove(at: index)
+        coordinator.coordinate(writingItemAt: fileUrl, options: .forReplacing, error: nil) { (url) in
+            do {
+                _=try databaseQueue.write() { db in
+                    try trip.delete(db)
+                }
+            } catch {
+                NSLog("Failed to delete trip from database: \(error)")
+            }
+        }
     }
     
     public func registerForUpdates(_ listener: DataUpdateListener) {
@@ -90,16 +128,6 @@ public class DataSource: NSObject {
     
     public func unregisterForUpdates(_ listener: DataUpdateListener) {
         listeners.removeValue(forKey: ObjectIdentifier(listener))
-    }
-    
-    private func saveTrips() {
-        coordinator.coordinate(writingItemAt: fileUrl, options: .forReplacing, error: nil) { (url) in
-            do {
-                try JSONEncoder().encode(tripsStore).write(to: url)
-            } catch {
-                NSLog("Failed to serialize trips to database: \(error)")
-            }
-        }
     }
     
     private func tripsUpdated() {
