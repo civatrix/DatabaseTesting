@@ -38,7 +38,11 @@ class ViewController: UIViewController {
                 return
             }
             
-            DataSource.shared.addTrip(Trip(PNR: PNR, name: name))
+            let bgTask = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+                DataSource.shared.addTrip(Trip(PNR: PNR, name: name))
+                UIApplication.shared.endBackgroundTask(bgTask)
+            }
         }))
         
         present(alert, animated: true, completion: nil)
