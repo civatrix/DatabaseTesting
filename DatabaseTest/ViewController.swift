@@ -23,29 +23,16 @@ class ViewController: UIViewController {
     }
     
     func addTrip() {
-        let alert = UIAlertController(title: "Add Trip", message: nil, preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.placeholder = "PNR"
+        do {
+            guard let url = Bundle.main.url(forResource: "trip", withExtension: "json") else { return }
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            let trip = try decoder.decode(Trip.self, from: data)
+            DataSource.shared.addTrip(trip)
+        } catch {
+            NSLog("\(error)")
         }
-        alert.addTextField { (textField) in
-            textField.placeholder = "Name"
-        }
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-            guard
-                let PNR = alert.textFields?[0].text,
-                let name = alert.textFields?[1].text
-            else {
-                return
-            }
-            
-            let bgTask = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-                DataSource.shared.addTrip(Trip(PNR: PNR, name: name))
-                UIApplication.shared.endBackgroundTask(bgTask)
-            }
-        }))
-        
-        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -61,8 +48,7 @@ extension ViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TripCell", for: indexPath)
             
             if let cell = cell as? TripCell {
-                cell.nameLabel.text = trips[indexPath.item].name
-                cell.pnrLabel.text = trips[indexPath.item].PNR
+                cell.pnrLabel.text = trips[indexPath.item].passengerNameRecord
             }
             
             return cell

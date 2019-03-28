@@ -45,7 +45,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func addTrip() {
-        DataSource.shared.addTrip(Trip(PNR: "Today", name: "Trip"))
+        
     }
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
@@ -65,8 +65,7 @@ extension TodayViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TripCell", for: indexPath)
             
             if let cell = cell as? TripCell {
-                cell.nameLabel.text = trips[indexPath.item].name
-                cell.pnrLabel.text = trips[indexPath.item].PNR
+                cell.pnrLabel.text = trips[indexPath.item].passengerNameRecord
             }
             
             return cell

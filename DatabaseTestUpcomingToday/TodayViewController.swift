@@ -15,7 +15,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     var upcomingTrip: Trip? {
         didSet {
             if let trip = upcomingTrip {
-                tripLabel.text = "\(trip.PNR) \(trip.name)"
+                tripLabel.text = trip.passengerNameRecord
             } else {
                 tripLabel.text = "No upcoming trips"
             }

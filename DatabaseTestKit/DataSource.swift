@@ -14,17 +14,6 @@ public protocol DataUpdateListener: class {
     func tripsUpdated(trips: [Trip])
 }
 
-public struct Trip: Codable, FetchableRecord, MutablePersistableRecord {
-    var id: Int64?
-    public let PNR: String
-    public let name: String
-    
-    public init(PNR: String, name: String) {
-        self.PNR = PNR
-        self.name = name
-    }
-}
-
 public class DataSource: NSObject {
     public static let shared = DataSource()
     
@@ -44,33 +33,22 @@ public class DataSource: NSObject {
     }
     
     private let databaseQueue: DatabaseQueue
-    private let fileUrl = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.com.databasetest")!.appendingPathComponent("database.sqlite")
+    private let fileUrl = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.com.databasetest")!.appendingPathComponent("Trips.db")
     // We need a new NSFileCoordinator for each transaction
     public var coordinator: NSFileCoordinator {
         return NSFileCoordinator(filePresenter: self)
     }
     
     override init() {
+        if !FileManager.default.fileExists(atPath: fileUrl.relativePath) {
+            let bundledURL = Bundle(for: type(of: self)).url(forResource: "Trips", withExtension: "db")!
+            try! FileManager.default.copyItem(at: bundledURL, to: fileUrl)
+        }
         databaseQueue = try! DatabaseQueue(path: fileUrl.relativePath)
         
         super.init()
-        
-        createDatabase()
+
         refreshData()
-    }
-    
-    private func createDatabase() {
-        do {
-            try databaseQueue.write { db in
-                try db.create(table: "trip", temporary: false, ifNotExists: true) { table in
-                    table.autoIncrementedPrimaryKey("id")
-                    table.column("PNR", .text)
-                    table.column("name", .text)
-                }
-            }
-        } catch {
-            NSLog("Failed to create table: \(error)")
-        }
     }
     
     @discardableResult

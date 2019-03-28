@@ -10,6 +10,9 @@
 		6B1E13BA9F87B4C3C8F273D7 /* Pods_DatabaseTestUpcomingToday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F082B8EADF24691913AEF0DE /* Pods_DatabaseTestUpcomingToday.framework */; };
 		747A562657E20F301B8F4E23 /* Pods_DatabaseTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF7DEAA21A9CC32B4E94B30 /* Pods_DatabaseTest.framework */; };
 		9F4499976AA748E50AA7A0AE /* Pods_DatabaseTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196C9AF5298BDFD6F2387090 /* Pods_DatabaseTestKit.framework */; };
+		B90FB013224BF925008CF81A /* trip.json in Resources */ = {isa = PBXBuildFile; fileRef = B90FB012224BF925008CF81A /* trip.json */; };
+		B9298BCB224C0216009D0543 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90FB014224BF938008CF81A /* Trip.swift */; };
+		B9298BCD224C2817009D0543 /* Trips.db in Resources */ = {isa = PBXBuildFile; fileRef = B9298BCC224C2817009D0543 /* Trips.db */; };
 		B98BD0C322441CC800442EC1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C4D94C2241B72D00BD35F3 /* NotificationCenter.framework */; };
 		B98BD0C622441CC800442EC1 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98BD0C522441CC800442EC1 /* TodayViewController.swift */; };
 		B98BD0C922441CC800442EC1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B98BD0C722441CC800442EC1 /* MainInterface.storyboard */; };
@@ -87,6 +90,9 @@
 		1A75C6CF1C09ABF00924B038 /* Pods_DatabaseTestToday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatabaseTestToday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF7DEAA21A9CC32B4E94B30 /* Pods_DatabaseTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatabaseTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A95C3ED785F8A4C648CADA15 /* Pods-DatabaseTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTest.release.xcconfig"; path = "Target Support Files/Pods-DatabaseTest/Pods-DatabaseTest.release.xcconfig"; sourceTree = "<group>"; };
+		B90FB012224BF925008CF81A /* trip.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trip.json; sourceTree = "<group>"; };
+		B90FB014224BF938008CF81A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		B9298BCC224C2817009D0543 /* Trips.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Trips.db; sourceTree = SOURCE_ROOT; };
 		B98BD0C222441CC800442EC1 /* DatabaseTestUpcomingToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DatabaseTestUpcomingToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98BD0C522441CC800442EC1 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		B98BD0C822441CC800442EC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -210,6 +216,7 @@
 		B9C4D91E2241A06000BD35F3 /* DatabaseTest */ = {
 			isa = PBXGroup;
 			children = (
+				B90FB012224BF925008CF81A /* trip.json */,
 				B9C4D95C22429E6C00BD35F3 /* DatabaseTest.entitlements */,
 				B9C4D91F2241A06000BD35F3 /* AppDelegate.swift */,
 				B9C4D9212241A06000BD35F3 /* ViewController.swift */,
@@ -224,6 +231,8 @@
 		B9C4D9392241B1C300BD35F3 /* DatabaseTestKit */ = {
 			isa = PBXGroup;
 			children = (
+				B9298BCC224C2817009D0543 /* Trips.db */,
+				B90FB014224BF938008CF81A /* Trip.swift */,
 				B9C4D9312241A26B00BD35F3 /* DataSource.swift */,
 				B9C4D93A2241B1C300BD35F3 /* DatabaseTestKit.h */,
 				B9C4D93B2241B1C300BD35F3 /* Info.plist */,
@@ -423,6 +432,7 @@
 				B9C4D92A2241A06200BD35F3 /* LaunchScreen.storyboard in Resources */,
 				B9C4D9272241A06200BD35F3 /* Assets.xcassets in Resources */,
 				B9C4D9252241A06000BD35F3 /* Main.storyboard in Resources */,
+				B90FB013224BF925008CF81A /* trip.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9298BCD224C2817009D0543 /* Trips.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9298BCB224C0216009D0543 /* Trip.swift in Sources */,
 				B9C4D9452241B1C900BD35F3 /* DataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
