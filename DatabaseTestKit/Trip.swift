@@ -13,7 +13,7 @@ import GRDB
 
 /// Metadata that is not part of the trip fetched from the API, but that is directly associated with the trip
 /// This data can be directly or indirectly modified by the user through use of the app, while the raw trip itself must be modified via RBF/Sabre
-public struct TripMetadata: Codable, FetchableRecord, MutablePersistableRecord {
+public struct TripMetadata: Codable {
     static var databaseDateDecodingStrategry: DatabaseDateDecodingStrategy {
         return .iso8601
     }
@@ -60,12 +60,19 @@ public struct TripMetadata: Codable, FetchableRecord, MutablePersistableRecord {
 }
 
 public struct Trip: Codable, FetchableRecord, MutablePersistableRecord {
-    static var databaseDateDecodingStrategry: DatabaseDateDecodingStrategy {
-        return .iso8601
+    public static func databaseJSONDecoder(for column: String) -> JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
+        return decoder
     }
     
-    public static var databaseDateEncodingStrategy: DatabaseDateEncodingStrategy {
-        return .iso8601
+    public static func databaseJSONEncoder(for column: String) -> JSONEncoder {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        encoder.outputFormatting = [.sortedKeys]
+        
+        return encoder
     }
     
     public let passengerNameRecord: String
@@ -79,7 +86,7 @@ public struct Trip: Codable, FetchableRecord, MutablePersistableRecord {
     public let eligibility: ManageTripEligibility?
     public let metadata: TripMetadata
     
-    private enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case passengerNameRecord = "pnr"
         case pseudoCityCode = "aaaPseudoCityCode"
         case guests
@@ -152,15 +159,7 @@ public struct Trip: Codable, FetchableRecord, MutablePersistableRecord {
     }
 }
 
-public struct OriginDestination: Codable, FetchableRecord, MutablePersistableRecord {
-    static var databaseDateDecodingStrategry: DatabaseDateDecodingStrategy {
-        return .iso8601
-    }
-    
-    public static var databaseDateEncodingStrategy: DatabaseDateEncodingStrategy {
-        return .iso8601
-    }
-    
+public struct OriginDestination: Codable {
     public let arrivalDateTime: Date
     public let departureDateTime: Date
     public let destinationAirportCode: String
@@ -168,7 +167,7 @@ public struct OriginDestination: Codable, FetchableRecord, MutablePersistableRec
     public let originAirportCode: String
     public let segments: [Segment]
     
-    public struct Metadata: Codable, FetchableRecord, MutablePersistableRecord {
+    public struct Metadata: Codable {
         public let hasHandledCheckInNotification: Bool
         
         public init(hasHandledCheckInNotification: Bool) {
@@ -237,14 +236,7 @@ public struct OriginDestination: Codable, FetchableRecord, MutablePersistableRec
     }
 }
 
-public struct Segment: Codable, FetchableRecord, MutablePersistableRecord {
-    static var databaseDateDecodingStrategry: DatabaseDateDecodingStrategy {
-        return .iso8601
-    }
-    
-    public static var databaseDateEncodingStrategy: DatabaseDateEncodingStrategy {
-        return .iso8601
-    }
+public struct Segment: Codable {
     
     public let type: LegType
     public let durationMinutes: Int
@@ -335,7 +327,7 @@ public struct Segment: Codable, FetchableRecord, MutablePersistableRecord {
     }
 }
 
-public enum LegType: String, Codable, FetchableRecord, MutablePersistableRecord {
+public enum LegType: String, Codable {
     case flight
     case layover
     
@@ -354,14 +346,7 @@ public enum LegType: String, Codable, FetchableRecord, MutablePersistableRecord 
     }
 }
 
-public struct Leg: Codable, FetchableRecord, MutablePersistableRecord {
-    static var databaseDateDecodingStrategry: DatabaseDateDecodingStrategy {
-        return .iso8601
-    }
-    
-    public static var databaseDateEncodingStrategy: DatabaseDateEncodingStrategy {
-        return .iso8601
-    }
+public struct Leg: Codable {
     
     public let type: LegType
     public let durationMinutes: Int
@@ -377,7 +362,7 @@ public struct Leg: Codable, FetchableRecord, MutablePersistableRecord {
     public let flightNumber: String? // not set for layover
     public let standby: Standby?
     
-    public struct Metadata: Codable, FetchableRecord, MutablePersistableRecord {
+    public struct Metadata: Codable {
         public let latestFlightStatus: FlightStatusDetails?
         
         public init(latestFlightStatus: FlightStatusDetails?) {
@@ -481,14 +466,7 @@ public struct Leg: Codable, FetchableRecord, MutablePersistableRecord {
     }
 }
 
-public struct UnconfirmedLeg: Codable, FetchableRecord, MutablePersistableRecord {
-    static var databaseDateDecodingStrategry: DatabaseDateDecodingStrategy {
-        return .iso8601
-    }
-    
-    public static var databaseDateEncodingStrategy: DatabaseDateEncodingStrategy {
-        return .iso8601
-    }
+public struct UnconfirmedLeg: Codable {
     
     public let arrivalDateTime: Date
     public let departureDateTime: Date
@@ -573,7 +551,7 @@ public struct UnconfirmedLeg: Codable, FetchableRecord, MutablePersistableRecord
     }
 }
 
-public struct Cabin: Codable, FetchableRecord, MutablePersistableRecord {
+public struct Cabin: Codable {
     public let code: String
     public let language: String
     public let name: String
@@ -596,7 +574,7 @@ public struct Cabin: Codable, FetchableRecord, MutablePersistableRecord {
     
 }
 
-public struct ManageTripEligibilityStatus: Codable, FetchableRecord, MutablePersistableRecord {
+public struct ManageTripEligibilityStatus: Codable {
     public let eligible: Bool
     public let errorCode: String?
     
@@ -606,7 +584,7 @@ public struct ManageTripEligibilityStatus: Codable, FetchableRecord, MutablePers
     }
 }
 
-public struct ManageTripEligibility: Codable, FetchableRecord, MutablePersistableRecord {
+public struct ManageTripEligibility: Codable {
     public let changeStatus: ManageTripEligibilityStatus
     public let cancelStatus: ManageTripEligibilityStatus
     public let seatsStatus: ManageTripEligibilityStatus
@@ -632,7 +610,7 @@ public struct ManageTripEligibility: Codable, FetchableRecord, MutablePersistabl
     }
 }
 
-public struct Guest: Codable, FetchableRecord, MutablePersistableRecord {
+public struct Guest: Codable {
     public let firstName: String
     public let lastName: String
     public let title: String // can be null, but we want a default value
@@ -775,7 +753,7 @@ public enum StandbyPriorityType: Int {
     }
 }
 
-public struct Standby: Codable, FetchableRecord, MutablePersistableRecord {
+public struct Standby: Codable {
     public let lid: String
     public let listed: String
     public let unsold: String
@@ -823,7 +801,7 @@ public struct Standby: Codable, FetchableRecord, MutablePersistableRecord {
     }
 }
 
-public struct StandbyBooking: Codable, FetchableRecord, MutablePersistableRecord {
+public struct StandbyBooking: Codable {
     public let firstName: String?
     public let lastName: String?
     public let classification: StandbyPriority
@@ -835,7 +813,7 @@ public struct StandbyBooking: Codable, FetchableRecord, MutablePersistableRecord
     }
 }
 
-public struct StandbyPriority: Codable, FetchableRecord, MutablePersistableRecord {
+public struct StandbyPriority: Codable {
     public let originalCode: String // Only needed so we can transfer needed information to legacy WJStandbyPriority
     public let type: StandbyPriorityType
     
@@ -1005,7 +983,7 @@ public struct StandbyPriority: Codable, FetchableRecord, MutablePersistableRecor
 }
 
 /// Decodes an Int from either a JSON int type or a JSON string containing an Int.
-struct IntAsPossibleStringJSONWrapper: Codable, FetchableRecord, MutablePersistableRecord {
+struct IntAsPossibleStringJSONWrapper: Codable {
     let int: Int
     
     public init(from decoder: Decoder) throws {
@@ -1027,14 +1005,7 @@ struct IntAsPossibleStringJSONWrapper: Codable, FetchableRecord, MutablePersista
     }
 }
 
-public struct FlightStatusDetails: Codable, FetchableRecord, MutablePersistableRecord {
-    static var databaseDateDecodingStrategry: DatabaseDateDecodingStrategy {
-        return .iso8601
-    }
-    
-    public static var databaseDateEncodingStrategy: DatabaseDateEncodingStrategy {
-        return .iso8601
-    }
+public struct FlightStatusDetails: Codable {
     public let actualGateArrival: Date
     public let actualGateDeparture: Date
     public let arrivalAirportCode: String
@@ -1067,7 +1038,7 @@ public struct FlightStatusDetails: Codable, FetchableRecord, MutablePersistableR
     public let scheduledGateDeparture: Date
     public let statusCode: FlightStatusCode
     
-    public struct Metadata: Codable, FetchableRecord, MutablePersistableRecord {
+    public struct Metadata: Codable {
         public let fetchDate: Date?
         
         public init(fetchDate: Date?) {
@@ -1289,14 +1260,14 @@ public struct FlightStatusDetails: Codable, FetchableRecord, MutablePersistableR
     
 }
 
-public enum FlightStatusCode: String, Codable, FetchableRecord, MutablePersistableRecord {
+public enum FlightStatusCode: String, Codable {
     case cancelled = "C"
     case landed = "L"
     case scheduled = "S"
     case active = "A"
 }
 
-public struct CarrierCode: Equatable, Codable, FetchableRecord, MutablePersistableRecord, RawRepresentable {
+public struct CarrierCode: Equatable, Codable, RawRepresentable {
     public var code: String
     
     public init?(rawValue: String) {

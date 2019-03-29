@@ -40,15 +40,33 @@ public class DataSource: NSObject {
     }
     
     override init() {
-        if !FileManager.default.fileExists(atPath: fileUrl.relativePath) {
-            let bundledURL = Bundle(for: type(of: self)).url(forResource: "Trips", withExtension: "db")!
-            try! FileManager.default.copyItem(at: bundledURL, to: fileUrl)
-        }
         databaseQueue = try! DatabaseQueue(path: fileUrl.relativePath)
         
         super.init()
 
+        createDatabase()
         refreshData()
+    }
+    
+    private func createDatabase() {
+        do {
+            try databaseQueue.write() { db in
+                try db.create(table: "trip", temporary: false, ifNotExists: true) { table in
+                    table.column(Trip.CodingKeys.passengerNameRecord.rawValue, .text).primaryKey(onConflict: .replace, autoincrement: false)
+                    table.column(Trip.CodingKeys.pseudoCityCode.rawValue, .text).notNull()
+                    table.column(Trip.CodingKeys.guests.rawValue, .text).notNull()
+                    table.column(Trip.CodingKeys.originDestinations.rawValue, .text).notNull()
+                    table.column(Trip.CodingKeys.unconfirmedLegs.rawValue, .text).notNull()
+                    table.column(Trip.CodingKeys.bookingNumber.rawValue, .text)
+                    table.column(Trip.CodingKeys.fullyUnconfirmed.rawValue, .boolean).notNull()
+                    table.column(Trip.CodingKeys.priority.rawValue, .text)
+                    table.column(Trip.CodingKeys.eligibility.rawValue, .text)
+                    table.column(Trip.CodingKeys.metadata.rawValue, .text).notNull()
+                }
+            }
+        } catch {
+            NSLog("Failed to create table: \(error)")
+        }
     }
     
     @discardableResult
