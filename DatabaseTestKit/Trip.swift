@@ -27,7 +27,7 @@ public struct TripMetadata: Codable {
     public let isPrematurelyComplete: Bool
     // the following are optional
     public let refreshDate: Date?
-    public let tripName: String? // added by user
+    public var tripName: String? // added by user
     public let bookingLastName: String? // name comes from original add-trip request
     public let bookingAccountIDHash: String? // hash occurs when added as part of a profile
     
@@ -84,7 +84,7 @@ public struct Trip: Codable, FetchableRecord, MutablePersistableRecord {
     public let fullyUnconfirmed: Bool
     public let priority: StandbyPriority?
     public let eligibility: ManageTripEligibility?
-    public let metadata: TripMetadata
+    public var metadata: TripMetadata
     
     public enum CodingKeys: String, CodingKey {
         case passengerNameRecord = "pnr"

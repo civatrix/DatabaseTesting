@@ -49,6 +49,7 @@ extension ViewController: UITableViewDataSource {
             
             if let cell = cell as? TripCell {
                 cell.pnrLabel.text = trips[indexPath.item].passengerNameRecord
+                cell.nameLabel.text = trips[indexPath.item].metadata.tripName
             }
             
             return cell
@@ -58,9 +59,20 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.item == trips.count else { return }
-        
-        addTrip()
+        if indexPath.item == trips.count {
+            addTrip()
+        } else {
+            var trip = trips[indexPath.item]
+            let alert = UIAlertController(title: "Set trip name", message: nil, preferredStyle: .alert)
+            alert.addTextField { (textfield) in
+                textfield.placeholder = "Name"
+            }
+            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (_) in
+                trip.metadata.tripName = alert.textFields![0].text
+                DataSource.shared.updateTrip(trip)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -74,7 +86,8 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         
-        DataSource.shared.removeTrip(at: indexPath.item)
+        let trip = trips[indexPath.item]
+        DataSource.shared.removeTrip(trip)
     }
 }
 

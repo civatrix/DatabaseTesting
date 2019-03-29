@@ -97,16 +97,15 @@ public class DataSource: NSObject {
                 try databaseQueue.write() { db in
                     var newTrip = trip
                     try newTrip.insert(db)
-                    tripsStore.append(newTrip)
                 }
             } catch {
                 NSLog("Failed to serialize trips to database: \(error)")
             }
         }
+        refreshData()
     }
     
-    public func removeTrip(at index: Int) {
-        let trip = tripsStore.remove(at: index)
+    public func removeTrip(_ trip: Trip) {
         coordinator.coordinate(writingItemAt: fileUrl, options: .forReplacing, error: nil) { (url) in
             do {
                 _=try databaseQueue.write() { db in
@@ -116,6 +115,20 @@ public class DataSource: NSObject {
                 NSLog("Failed to delete trip from database: \(error)")
             }
         }
+        refreshData()
+    }
+    
+    public func updateTrip(_ trip: Trip) {
+        coordinator.coordinate(writingItemAt: fileUrl, options: .forMerging, error: nil) { (url) in
+            do {
+                try databaseQueue.write() { db in
+                    try trip.update(db)
+                }
+            } catch {
+                NSLog("Failed to update trip: \(error)")
+            }
+        }
+        refreshData()
     }
     
     public func registerForUpdates(_ listener: DataUpdateListener) {

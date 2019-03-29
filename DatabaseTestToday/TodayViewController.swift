@@ -78,7 +78,8 @@ extension TodayViewController: UITableViewDelegate {
         if indexPath.item == trips.count {
             addTrip()
         } else {
-            DataSource.shared.removeTrip(at: indexPath.item)
+            let trip = trips[indexPath.item]
+            DataSource.shared.removeTrip(trip)
         }
     }
 }
